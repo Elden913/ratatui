@@ -349,6 +349,11 @@ where
         self.buffers[1 - self.current].reset();
         Ok(())
     }
+    /// Mark the underlying buffer dirty, forcing a full redraw on the next draw call.
+    pub fn mark_dirty(&mut self) {
+        // Mark all cells in the back buffer dirty
+        self.buffers[1 - self.current].mark_dirty();
+    }
 
     /// Clears the inactive buffer and swaps it with the current buffer
     pub fn swap_buffers(&mut self) {
