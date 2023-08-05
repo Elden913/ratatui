@@ -91,6 +91,11 @@ impl Cell {
         }
         self.modifier = Modifier::empty();
     }
+    /// Marks cell dirty so it has to be redrawn
+    pub fn mark_dirty(&mut self) {
+        self.reset();
+        self.symbol.clear();
+    }
 }
 
 impl Default for Cell {
