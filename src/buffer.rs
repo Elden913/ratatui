@@ -417,6 +417,12 @@ impl Buffer {
         }
         self.area = area;
     }
+    /// Marks entire buffer dirty
+    pub fn mark_dirty(&mut self) {
+        for c in &mut self.content {
+            c.mark_dirty();
+        }
+    }
 
     /// Reset all cells in the buffer
     pub fn reset(&mut self) {
